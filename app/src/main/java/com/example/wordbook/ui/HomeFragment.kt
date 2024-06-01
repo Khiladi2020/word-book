@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.wordbook.R
+import com.example.wordbook.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +23,23 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        initListeners()
+        return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-//        val btn = view?.findViewById<Button>(R.id.next)
-//        btn?.setOnClickListener {
-//            findNavController().navigate(R.id.action_homeFragment_to_favouritesFragment)
-//        }
+    private fun initListeners(){
+        binding.btnRandomWord.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_detailFragment)
+        }
+        binding.btnFavourites.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_favouritesFragment)
+        }
+        binding.btnHistory.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_historyFragment)
+        }
+        binding.btnSettings.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_settingsFragment)
+        }
     }
 }
