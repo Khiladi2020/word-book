@@ -25,9 +25,9 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val btn = view?.findViewById<Button>(R.id.next)
-        btn?.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_favouritesFragment)
-        }
+//        val btn = view?.findViewById<Button>(R.id.next)
+//        btn?.setOnClickListener {
+//            findNavController().navigate(R.id.action_homeFragment_to_favouritesFragment)
+//        }
     }
 }
