@@ -12,9 +12,23 @@
         <action
             android:id="@+id/action_homeFragment_to_favouritesFragment"
             app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.example.wordbook.ui.FavouritesFragment"
         android:label="FavouritesFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.wordbook.ui.HistoryFragment"
+        android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.wordbook.ui.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
