@@ -20,6 +20,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        android:clickable="true"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,13 +61,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-            <Button
-                style="?attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Learn more"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView3" />
+<!--            <Button-->
+<!--                style="@style/Widget.Material3.Button.TextButton"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Learn more"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/textView3" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -78,8 +79,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="@dimen/spacing12">
 
         <ImageView
             android:layout_width="32dp"
@@ -97,9 +103,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center_vertical"
-        android:layout_marginTop="@dimen/spacing16"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="@dimen/spacing12">
 
         <ImageView
             android:layout_width="32dp"
@@ -117,9 +127,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center_vertical"
-        android:layout_marginTop="@dimen/spacing16"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/spacing16"
+        android:paddingHorizontal="4dp">
 
         <ImageView
             android:layout_width="32dp"
@@ -137,9 +151,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center_vertical"
-        android:layout_marginTop="@dimen/spacing16"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="@dimen/spacing16">
 
         <ImageView
             android:layout_width="32dp"
