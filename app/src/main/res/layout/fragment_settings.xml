@@ -19,11 +19,11 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
                 android:elevation="0dp"
-                app:title="@string/settings"
+                app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/baseline_arrow_back_24"
-                app:subtitle="This is to ensure"/>
+                app:subtitle="This is to ensure"
+                app:title="@string/settings" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -35,14 +35,125 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/spacing16"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing16"
+                android:layout_marginTop="@dimen/settingSwitchItemTopMargin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="?attr/textAppearanceBodyLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Notify Word of The Day" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing16"
+                android:layout_marginTop="@dimen/settingSwitchItemTopMargin"
+                android:gravity="center_vertical"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    style="?attr/textAppearanceBodyLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Dark Theme" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing16"
+                android:layout_marginTop="@dimen/settingSwitchItemTopMargin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="?attr/textAppearanceBodyLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="History" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
             <TextView
+                style="?attr/textAppearanceBodyLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="I am a hero ds sdfs df sd fds fds fdsfdsfdsfsdf ds fsd f sdf sd fs df sd fsd f sdf ds fds f sdf sd fds fsd fds f sdf sd ds f sdf" />
+                android:layout_marginHorizontal="@dimen/spacing16"
+                android:layout_marginVertical="@dimen/settingItemVerticalMargin"
+                android:text="Clear History" />
 
+            <TextView
+                style="?attr/textAppearanceBodyLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing16"
+                android:layout_marginVertical="@dimen/settingItemVerticalMargin"
+                android:text="Clear Favourites" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing16"
+                android:layout_marginVertical="@dimen/settingItemVerticalMargin"
+                android:orientation="vertical">
+
+                <TextView
+                    style="?attr/textAppearanceBodyLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rate App" />
+
+                <TextView
+                    style="?attr/textAppearanceBodyMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="If you enjoy using this app, would you mind taking a moment to rate it? It won't take more than a minute.
+Thanks for your support!" />
+            </LinearLayout>
+
+            <TextView
+                style="?attr/textAppearanceBodyLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing16"
+                android:layout_marginVertical="@dimen/settingItemVerticalMargin"
+                android:text="Share App" />
+
+            <TextView
+                style="?attr/textAppearanceBodyLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing16"
+                android:layout_marginVertical="@dimen/settingItemVerticalMargin"
+                android:text="About, Licences and Privacy" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
