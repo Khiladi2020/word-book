@@ -54,6 +54,8 @@ dependencies {
     ksp("com.google.dagger:dagger-compiler:$dagger_version")
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+
 
 
     testImplementation("junit:junit:4.13.2")
