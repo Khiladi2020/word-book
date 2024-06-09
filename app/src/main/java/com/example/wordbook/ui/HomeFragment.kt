@@ -41,8 +41,5 @@ class HomeFragment : Fragment() {
         binding.btnSettings.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_homeFragment_to_settingsFragment)
         }
-        binding.searchBar.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
-        }
     }
 }

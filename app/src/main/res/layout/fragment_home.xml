@@ -1,179 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/spacing16"
     tools:context=".ui.HomeFragment">
 
-    <com.google.android.material.search.SearchBar
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/search_placeholder"
-        app:defaultMarginsEnabled="false" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing16" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:clickable="true"
         android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.search.SearchBar
+            android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/spacing16">
+            android:hint="@string/search_placeholder"
+            app:defaultMarginsEnabled="false"
+            android:layout_marginHorizontal="@dimen/spacing16"
+            android:layout_marginTop="@dimen/spacing16"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Word of the day"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1 June 2024"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView"
-                style="?attr/textAppearanceHeadlineLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="baby's tears"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <TextView
-                android:id="@+id/textView3"
-                style="?attr/textAppearanceBodyMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Soleirolia soleirolii, a plant in the nettle family grown as a green, mossy groundcover."
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-<!--            <Button-->
-<!--                style="@style/Widget.Material3.Button.TextButton"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Learn more"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/textView3" />-->
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing24" />
-
-    <LinearLayout
-        android:id="@+id/btn_random_word"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/ripple_effect"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="4dp"
-        android:paddingVertical="@dimen/spacing12">
+        android:padding="@dimen/spacing16"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/baseline_refresh_24" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
-        <TextView
-            style="?attr/textAppearanceBodyLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing16"
-            android:text="Random Word" />
-    </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing16" />
 
-    <LinearLayout
-        android:id="@+id/btn_favourites"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing16">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Word of the day"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 June 2024"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        style="?attr/textAppearanceHeadlineLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="baby's tears"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        style="?attr/textAppearanceBodyMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Soleirolia soleirolii, a plant in the nettle family grown as a green, mossy groundcover."
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                    <!--            <Button-->
+                    <!--                style="@style/Widget.Material3.Button.TextButton"-->
+                    <!--                android:layout_width="wrap_content"-->
+                    <!--                android:layout_height="wrap_content"-->
+                    <!--                android:text="Learn more"-->
+                    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--                app:layout_constraintTop_toBottomOf="@id/textView3" />-->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing24" />
+
+            <LinearLayout
+                android:id="@+id/btn_random_word"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_effect"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="@dimen/spacing12">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_refresh_24" />
+
+                <TextView
+                    style="?attr/textAppearanceBodyLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing16"
+                    android:text="Random Word" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_favourites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_effect"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="@dimen/spacing12">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_star_24" />
+
+                <TextView
+                    style="?attr/textAppearanceBodyLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing16"
+                    android:text="Favourites" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_effect"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="@dimen/spacing12">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_history_24" />
+
+                <TextView
+                    style="?attr/textAppearanceBodyLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing16"
+                    android:text="History" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_effect"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="@dimen/spacing12">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_settings_24" />
+
+                <TextView
+                    style="?attr/textAppearanceBodyLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing16"
+                    android:text="Settings" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.search.SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ripple_effect"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="4dp"
-        android:paddingVertical="@dimen/spacing12">
+        app:layout_anchor="@id/search_bar"
+        android:layout_height="wrap_content" />
 
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/baseline_star_24" />
-
-        <TextView
-            style="?attr/textAppearanceBodyLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing16"
-            android:text="Favourites" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/btn_history"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ripple_effect"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingVertical="@dimen/spacing12"
-        android:paddingHorizontal="4dp">
-
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/baseline_history_24" />
-
-        <TextView
-            style="?attr/textAppearanceBodyLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing16"
-            android:text="History" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/btn_settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ripple_effect"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="4dp"
-        android:paddingVertical="@dimen/spacing12">
-
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/baseline_settings_24" />
-
-        <TextView
-            style="?attr/textAppearanceBodyLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing16"
-            android:text="Settings" />
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
