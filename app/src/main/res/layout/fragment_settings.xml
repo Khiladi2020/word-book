@@ -53,6 +53,7 @@
                     android:text="Notify Word of The Day" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/notify_word_of_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -74,6 +75,7 @@
                     android:text="Dark Theme" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/dark_theme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -94,6 +96,7 @@
                     android:text="History" />
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/history"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
