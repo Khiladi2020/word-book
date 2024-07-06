@@ -43,6 +43,7 @@ android {
 dependencies {
     val dagger_version = "2.50"
     val nav_version = "2.7.7"
+    val room_version = "2.6.1"
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -56,6 +57,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
 
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
 
 
     testImplementation("junit:junit:4.13.2")
