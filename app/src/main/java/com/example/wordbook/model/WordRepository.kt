@@ -1,6 +1,8 @@
 package com.example.wordbook.model
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class WordRepository @Inject constructor(val database: WordDatabase) {
@@ -9,6 +11,8 @@ class WordRepository @Inject constructor(val database: WordDatabase) {
     }
 
     suspend fun getWordsStartingWith(alphabet: String = "A"): List<Word> {
-        return database.wordDao().getAll()
+        return withContext(Dispatchers.IO){
+            database.wordDao().getAll()
+        }
     }
 }
