@@ -8,6 +8,6 @@ interface WordDao {
     @Query("SELECT * FROM `words-list`")
     fun getAll(): List<Word>
 
-    @Query("SELECT * FROM `words-list` where word LIKE '%' || :text || '%'")
+    @Query("SELECT * FROM `words-list` where word LIKE :text || '%' COLLATE NOCASE")
     fun getWordsContainingText(text: String): List<Word>
 }
