@@ -7,7 +7,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [SharedPrefsModule::class])
+@Component(modules = [SharedPrefsModule::class, DatabaseModule::class])
 interface AppComponent {
 
     @Component.Factory
