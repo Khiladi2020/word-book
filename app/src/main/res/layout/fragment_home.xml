@@ -200,6 +200,13 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         app:layout_anchor="@id/search_bar"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchView_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.search.SearchView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
