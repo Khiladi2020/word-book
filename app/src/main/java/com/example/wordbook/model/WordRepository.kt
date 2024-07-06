@@ -12,7 +12,7 @@ class WordRepository @Inject constructor(val database: WordDatabase) {
 
     suspend fun getWordsStartingWith(alphabet: String = "A"): List<Word> {
         return withContext(Dispatchers.IO){
-            database.wordDao().getAll()
+            database.wordDao().getWordsContainingText(alphabet)
         }
     }
 }
