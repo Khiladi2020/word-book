@@ -24,7 +24,7 @@ class HomeViewModel(val wordRepository: WordRepository): ViewModel() {
         viewModelScope.launch {
             Log.d(TAG,"Repository request started")
             val result = wordRepository.getWordsStartingWith(searchText).map { SearchItemModel(it.wordId ?: 0, it.word)}
-            Log.d(TAG, "THis is my latest data $result")
+            Log.d(TAG, "THis is my latest data ${result.size} $result")
             _wordsList.emit(result)
         }
     }

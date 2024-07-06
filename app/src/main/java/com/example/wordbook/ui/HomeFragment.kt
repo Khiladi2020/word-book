@@ -94,4 +94,10 @@ class HomeFragment : Fragment() {
             viewModel.updateSearchText(text.toString())
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        // Do Initial Search to speed up stuff
+        viewModel.updateSearchText("A")
+    }
 }
