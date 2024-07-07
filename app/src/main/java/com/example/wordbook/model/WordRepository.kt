@@ -15,4 +15,10 @@ class WordRepository @Inject constructor(val database: WordDatabase) {
             database.wordDao().getWordsContainingText(alphabet)
         }
     }
+
+    suspend fun getWordWithId(wordId: Int): Word? {
+        return withContext(Dispatchers.IO){
+            database.wordDao().getWordWithId(wordId)
+        }
+    }
 }
