@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.wordbook.MainActivity.Companion.TAG
 import com.example.wordbook.model.SearchItemModel
+import com.example.wordbook.model.Word
 import com.example.wordbook.model.WordRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(val wordRepository: WordRepository): ViewModel() {
 
-    private val _wordsList: MutableStateFlow<List<SearchItemModel>> = MutableStateFlow(listOf())
+    private val _wordsList: MutableStateFlow<List<Word>> = MutableStateFlow(listOf())
 
     // Public
     val wordsList = _wordsList.asStateFlow()
@@ -23,7 +24,7 @@ class HomeViewModel(val wordRepository: WordRepository): ViewModel() {
     fun updateSearchText(searchText: String){
         viewModelScope.launch {
             Log.d(TAG,"Repository request started")
-            val result = wordRepository.getWordsStartingWith(searchText).map { SearchItemModel(it.wordId ?: 0, it.word)}
+            val result = wordRepository.getWordsStartingWith(searchText)
             Log.d(TAG, "THis is my latest data ${result.size} $result")
             _wordsList.emit(result)
         }

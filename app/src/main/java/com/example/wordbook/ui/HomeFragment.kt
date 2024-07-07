@@ -21,6 +21,7 @@ import com.example.wordbook.MainApplication
 import com.example.wordbook.R
 import com.example.wordbook.adapters.SearchAdapter
 import com.example.wordbook.databinding.FragmentHomeBinding
+import com.example.wordbook.model.SearchItemModel
 import com.example.wordbook.model.WordRepository
 import com.example.wordbook.viewmodels.HomeViewModel
 import kotlinx.coroutines.flow.map
@@ -66,7 +67,7 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.wordsList.map {
                 it.map {
-                    it.text
+                    SearchItemModel(it.wordId ?: 0, it.word)
                 }
             }.collect {
                 Log.d(TAG, "New updated list of data ${it}")
