@@ -65,16 +65,24 @@ class HomeFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            viewModel.wordsList.map {
-                it.map {
-                    SearchItemModel(it.wordId ?: 0, it.word)
+            // Listen updates only when in focus
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.wordsList.map {
+                    it.map {
+                        SearchItemModel(it.wordId ?: 0, it.word)
+                    }
+                }.collect {
+                    Log.d(TAG, "New updated list of data ${it}")
+                    (binding.searchViewRecyclerView.adapter as SearchAdapter).updateData(it)
                 }
-            }.collect {
-                Log.d(TAG, "New updated list of data ${it}")
-                (binding.searchViewRecyclerView.adapter as SearchAdapter).updateData(it)
             }
-
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Do Initial Search to speed up stuff
+        viewModel.updateSearchText("A")
     }
 
     private fun initListeners() {
@@ -94,11 +102,5 @@ class HomeFragment : Fragment() {
         binding.searchView.editText.doOnTextChanged { text, start, before, count ->
             viewModel.updateSearchText(text.toString())
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        // Do Initial Search to speed up stuff
-        viewModel.updateSearchText("A")
     }
 }
