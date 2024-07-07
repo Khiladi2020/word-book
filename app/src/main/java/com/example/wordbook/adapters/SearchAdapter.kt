@@ -52,7 +52,7 @@ class SearchAdapter(val initialData: List<SearchItemModel>? = null) : RecyclerVi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val item = SearchItemBinding.inflate(LayoutInflater.from(parent.context))
+        val item = SearchItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(item.root)
     }
 
