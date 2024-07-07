@@ -1,6 +1,7 @@
 package com.example.wordbook.di
 
 import android.content.Context
+import com.example.wordbook.ui.DetailFragment
 import com.example.wordbook.ui.HomeFragment
 import com.example.wordbook.ui.SettingsFragment
 import dagger.BindsInstance
@@ -17,4 +18,5 @@ interface AppComponent {
     }
     fun injectSettings(fragment: SettingsFragment)
     fun injectHome(fragment: HomeFragment)
+    fun injectDetails(fragment: DetailFragment)
 }
