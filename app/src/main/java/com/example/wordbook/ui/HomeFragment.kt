@@ -60,7 +60,10 @@ class HomeFragment : Fragment() {
 
     private fun initData() {
         binding.searchViewRecyclerView.apply {
-            adapter = SearchAdapter()
+            adapter = SearchAdapter() {
+                Log.d(TAG, "Clicked on item $it")
+//                view?.findNavController()?.navigate(R.id.action_homeFragment_to_detailFragment)
+            }
             layoutManager = LinearLayoutManager(context)
         }
 

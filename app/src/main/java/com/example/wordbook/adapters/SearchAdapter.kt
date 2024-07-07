@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -15,10 +16,13 @@ import com.example.wordbook.databinding.SearchItemBinding
 import com.example.wordbook.model.SearchItemModel
 import com.example.wordbook.model.Word
 
-class SearchAdapter(val initialData: List<SearchItemModel>? = null) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(
+    val initialData: List<SearchItemModel>? = null,
+    val itemClickListener: (SearchItemModel) -> Unit = {}
+) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     private var data: List<SearchItemModel> = listOf()
 
-    private val diffUtil = object : DiffUtil.ItemCallback<SearchItemModel>(){
+    private val diffUtil = object : DiffUtil.ItemCallback<SearchItemModel>() {
         override fun areItemsTheSame(oldItem: SearchItemModel, newItem: SearchItemModel): Boolean {
             return oldItem.id == oldItem.id
         }
@@ -35,24 +39,25 @@ class SearchAdapter(val initialData: List<SearchItemModel>? = null) : RecyclerVi
     private val asyncListDiffer = AsyncListDiffer(this, diffUtil)
 
     init {
-        if(initialData != null){
+        if (initialData != null) {
             updateData(initialData)
         }
     }
 
-    fun updateData(updatedData: List<SearchItemModel>){
-        Log.d(TAG,"Updated data submitted")
+    fun updateData(updatedData: List<SearchItemModel>) {
+        Log.d(TAG, "Updated data submitted")
         data = updatedData
         asyncListDiffer.submitList(data)
     }
 
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView = view.findViewById<TextView>(R.id.searchText)
+        val searchItem = view.findViewById<LinearLayout>(R.id.searchItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val item = SearchItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val item = SearchItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(item.root)
     }
 
@@ -62,5 +67,6 @@ class SearchAdapter(val initialData: List<SearchItemModel>? = null) : RecyclerVi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textView.text = asyncListDiffer.currentList[position].text.toString()
+        holder.searchItem.setOnClickListener { itemClickListener(asyncListDiffer.currentList[position]) }
     }
 }
