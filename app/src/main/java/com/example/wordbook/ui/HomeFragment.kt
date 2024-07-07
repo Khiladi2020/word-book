@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Lifecycle
@@ -61,8 +62,13 @@ class HomeFragment : Fragment() {
     private fun initData() {
         binding.searchViewRecyclerView.apply {
             adapter = SearchAdapter() {
+                val data = bundleOf(
+                    DetailFragment.PARAM_NAME_WORD_ID to it.id,
+                    DetailFragment.PARAM_NAME_WORD_TEXT to it.text
+                )
                 Log.d(TAG, "Clicked on item $it")
-//                view?.findNavController()?.navigate(R.id.action_homeFragment_to_detailFragment)
+                view?.findNavController()
+                    ?.navigate(R.id.action_homeFragment_to_detailFragment, data)
             }
             layoutManager = LinearLayoutManager(context)
         }
