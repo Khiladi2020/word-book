@@ -8,6 +8,7 @@ import com.example.wordbook.MainActivity.Companion.TAG
 import com.example.wordbook.model.SearchItemModel
 import com.example.wordbook.model.Word
 import com.example.wordbook.model.WordRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -17,15 +18,25 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class HomeViewModel(private val wordRepository: WordRepository): ViewModel() {
 
     private val _wordsList: MutableStateFlow<List<Word>> = MutableStateFlow(listOf())
+    private var _lastWordId: Int? = null
     private var searchJob: Job? = null
 
 
     // Public
     val wordsList = _wordsList.asStateFlow()
+    val lastWordId get() = _lastWordId
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            _lastWordId = wordRepository.getMaxWordId()
+            Log.d(TAG, "Last word id is $_lastWordId")
+        }
+    }
 
     fun updateSearchText(searchText: String){
         if(searchText.isEmpty()) return
@@ -45,6 +56,17 @@ class HomeViewModel(private val wordRepository: WordRepository): ViewModel() {
         return flow {
             val result = wordRepository.getWordWithId(id);
             emit(result)
+        }
+    }
+
+    fun getRandomWord(): Flow<Word> {
+        return flow {
+            if (lastWordId != null){
+                val randomWordId = Random.nextInt(0, lastWordId!!)
+                val result = wordRepository.getWordWithId(randomWordId)
+                if(result != null) emit(result)
+                else emit(Word(0,"a","Error","Unexpected Error"))
+            }
         }
     }
 
