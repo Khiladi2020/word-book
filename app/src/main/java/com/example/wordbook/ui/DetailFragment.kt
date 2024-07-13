@@ -6,15 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.wordbook.MainActivity.Companion.TAG
 import com.example.wordbook.MainApplication
-import com.example.wordbook.R
 import com.example.wordbook.databinding.FragmentDetailBinding
-import com.example.wordbook.model.WordRepository
+import com.example.wordbook.viewmodels.HomeViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class DetailFragment : Fragment() {
     private var PARAM_WORD_ID: Int? = null
@@ -22,30 +21,36 @@ class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
 
-    @Inject
-    lateinit var wordRepository: WordRepository
+    private val viewModel by activityViewModels<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Inject
-        (activity?.application as MainApplication).appComponent?.injectDetails(this)
+        // (activity?.application as MainApplication).appComponent?.injectDetails(this)
         // Retrieve Arguments
         PARAM_WORD_ID = arguments?.getInt(PARAM_NAME_WORD_ID)
         PARAM_WORD_TEXT = arguments?.getString(PARAM_NAME_WORD_TEXT)
 
+        // Initialize/Retrieve view model
+        // viewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
+
+        Log.d(TAG, "View Model instance $viewModel")
+
         Log.d(TAG, "Data recevied in $PARAM_WORD_ID, $PARAM_WORD_TEXT")
     }
 
-    private fun initData(){
-        if(PARAM_WORD_ID != null){
+    private fun initData() {
+        if (PARAM_WORD_ID != null) {
             lifecycleScope.launch {
-                val word = wordRepository.getWordWithId(PARAM_WORD_ID!!)
-                Log.d(TAG, "Retrieved the data $word")
-                binding.topAppBarCollapsing.title = word?.word
-                binding.wordMeaning.text = word?.meaning
+                viewModel.getWordDetailById(PARAM_WORD_ID!!).collect {
+                    Log.d(TAG, "Retrieved the data $it")
+                    binding.topAppBarCollapsing.title = it?.word
+                    binding.wordMeaning.text = it?.meaning
+                }
             }
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

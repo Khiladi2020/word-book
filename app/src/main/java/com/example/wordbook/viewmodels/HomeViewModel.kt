@@ -10,13 +10,15 @@ import com.example.wordbook.model.Word
 import com.example.wordbook.model.WordRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class HomeViewModel(val wordRepository: WordRepository): ViewModel() {
+class HomeViewModel(private val wordRepository: WordRepository): ViewModel() {
 
     private val _wordsList: MutableStateFlow<List<Word>> = MutableStateFlow(listOf())
     private var searchJob: Job? = null
@@ -36,6 +38,13 @@ class HomeViewModel(val wordRepository: WordRepository): ViewModel() {
             val result = wordRepository.getWordsStartingWith(searchText)
             Log.d(TAG, "THis is my latest data ${result.size} $result")
             _wordsList.emit(result)
+        }
+    }
+
+    fun getWordDetailById(id: Int): Flow<Word?> {
+        return flow {
+            val result = wordRepository.getWordWithId(id);
+            emit(result)
         }
     }
 

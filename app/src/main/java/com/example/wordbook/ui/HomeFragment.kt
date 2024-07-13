@@ -10,6 +10,8 @@ import android.widget.Button
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -36,6 +38,7 @@ class HomeFragment : Fragment() {
     lateinit var wordRepository: WordRepository
 
     private lateinit var viewModel: HomeViewModel
+    // private val viewModel by activityViewModels<HomeViewModel> { HomeViewModel.Companion.Factory(wordRepository) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
