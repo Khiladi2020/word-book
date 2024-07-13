@@ -21,4 +21,8 @@ class WordRepository @Inject constructor(val database: WordDatabase) {
             database.wordDao().getWordWithId(wordId)
         }
     }
+
+    suspend fun getMaxWordId(): Int {
+        return database.wordDao().getMaxWordId()
+    }
 }

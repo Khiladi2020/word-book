@@ -13,4 +13,7 @@ interface WordDao {
 
     @Query("SELECT * FROM `words-list` where word_id == :wordId")
     fun getWordWithId(wordId: Int): Word?
+
+    @Query("SELECT MAX(word_id) FROM `words-list`")
+    fun getMaxWordId(): Int
 }
