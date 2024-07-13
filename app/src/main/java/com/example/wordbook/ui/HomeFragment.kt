@@ -99,7 +99,8 @@ class HomeFragment : Fragment() {
 
     private fun initListeners() {
         binding.btnRandomWord.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_homeFragment_to_detailFragment)
+            val data = bundleOf(DetailFragment.PARAM_NAME_SHOW_RANDOM_NO to true)
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_detailFragment, data)
         }
         binding.btnFavourites.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_homeFragment_to_favouritesFragment)
