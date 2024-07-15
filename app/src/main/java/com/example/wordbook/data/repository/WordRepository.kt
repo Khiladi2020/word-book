@@ -1,5 +1,6 @@
 package com.example.wordbook.data.repository
 
+import com.example.wordbook.data.local.History
 import com.example.wordbook.data.local.Word
 import com.example.wordbook.data.local.WordDatabase
 import kotlinx.coroutines.Dispatchers
@@ -25,5 +26,11 @@ class WordRepository @Inject constructor(val database: WordDatabase) {
 
     suspend fun getMaxWordId(): Int {
         return database.wordDao().getMaxWordId()
+    }
+
+    suspend fun insertHistory(historyItem: History){
+        return withContext(Dispatchers.IO){
+            database.historyDao().insertData(historyItem.text, historyItem.wordId)
+        }
     }
 }
