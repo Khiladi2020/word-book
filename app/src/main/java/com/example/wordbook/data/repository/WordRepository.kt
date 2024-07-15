@@ -1,7 +1,8 @@
-package com.example.wordbook.model
+package com.example.wordbook.data.repository
 
+import com.example.wordbook.data.local.Word
+import com.example.wordbook.data.local.WordDatabase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

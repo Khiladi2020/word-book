@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.room.Room
 import com.example.wordbook.MainActivity
-import com.example.wordbook.model.WordDatabase
+import com.example.wordbook.data.local.WordDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

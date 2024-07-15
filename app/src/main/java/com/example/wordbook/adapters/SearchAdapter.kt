@@ -1,6 +1,5 @@
 package com.example.wordbook.adapters
 
-import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import com.example.wordbook.MainActivity.Companion.TAG
 import com.example.wordbook.R
 import com.example.wordbook.databinding.SearchItemBinding
 import com.example.wordbook.model.SearchItemModel
-import com.example.wordbook.model.Word
 
 class SearchAdapter(
     val initialData: List<SearchItemModel>? = null,

@@ -1,8 +1,7 @@
-package com.example.wordbook.model
+package com.example.wordbook.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import java.util.ArrayList
 
 @Database(entities = [Word::class], version = 1)
 abstract class WordDatabase: RoomDatabase() {

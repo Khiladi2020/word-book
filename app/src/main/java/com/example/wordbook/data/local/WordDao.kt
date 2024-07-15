@@ -1,4 +1,4 @@
-package com.example.wordbook.model
+package com.example.wordbook.data.local
 
 import androidx.room.Dao
 import androidx.room.Query

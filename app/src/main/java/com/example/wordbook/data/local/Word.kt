@@ -1,4 +1,4 @@
-package com.example.wordbook.model
+package com.example.wordbook.data.local
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
