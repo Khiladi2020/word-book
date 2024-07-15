@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.wordbook.MainActivity.Companion.TAG
+import com.example.wordbook.data.local.History
 import com.example.wordbook.data.local.Word
 import com.example.wordbook.data.repository.WordRepository
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +47,13 @@ class HomeViewModel(private val wordRepository: WordRepository): ViewModel() {
             val result = wordRepository.getWordsStartingWith(searchText)
             Log.d(TAG, "THis is my latest data ${result.size} $result")
             _wordsList.emit(result)
+        }
+    }
+
+    fun addHistory(historyItem: History){
+        Log.d(TAG, "history log request received")
+        viewModelScope.launch {
+            wordRepository.insertHistory(historyItem)
         }
     }
 

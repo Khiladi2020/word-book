@@ -11,6 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.wordbook.MainActivity.Companion.TAG
 import com.example.wordbook.MainApplication
+import com.example.wordbook.data.local.History
+import com.example.wordbook.data.local.Word
 import com.example.wordbook.databinding.FragmentDetailBinding
 import com.example.wordbook.viewmodels.HomeViewModel
 import kotlinx.coroutines.launch
@@ -21,6 +23,7 @@ class DetailFragment : Fragment() {
     private var PARAM_WORD_TEXT: String? = null
     private var PARAM_SHOW_RANDOM_NO: Boolean? = false
 
+    private lateinit var currentWord: Word
     private lateinit var binding: FragmentDetailBinding
 
     private val viewModel by activityViewModels<HomeViewModel>()
@@ -42,6 +45,12 @@ class DetailFragment : Fragment() {
         Log.d(TAG, "Data received is $PARAM_WORD_ID, $PARAM_WORD_TEXT")
     }
 
+    private fun logHistory() {
+        if(::currentWord.isInitialized){
+            viewModel.addHistory(History(text = currentWord.word, wordId = currentWord.wordId!!))
+        }
+    }
+
     private fun initData() {
         if (PARAM_WORD_ID != -1) {
             lifecycleScope.launch {
@@ -49,6 +58,10 @@ class DetailFragment : Fragment() {
                     Log.d(TAG, "Retrieved the data $it")
                     binding.topAppBarCollapsing.title = it?.word
                     binding.wordMeaning.text = it?.meaning
+                    if(it != null) {
+                        currentWord = it
+                        logHistory()
+                    }
                 }
             }
         }
@@ -58,6 +71,8 @@ class DetailFragment : Fragment() {
                     Log.d(TAG, "Random word is $it")
                     binding.topAppBarCollapsing.title = it.word
                     binding.wordMeaning.text = it.meaning
+                    currentWord = it
+                    logHistory()
                 }
             }
         }
@@ -71,6 +86,7 @@ class DetailFragment : Fragment() {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
         initListeners()
         initData()
+        logHistory()
         return binding.root
     }
 
